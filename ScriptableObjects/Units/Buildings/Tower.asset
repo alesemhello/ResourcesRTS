@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5719b760f874c384693a56f140bd7f02, type: 3}
+  m_Name: Tower
+  m_EditorClassIdentifier: 
+  code: tower
+  unitName: Tower
+  description: Defence type building.
+  healthpoints: 500
+  prefab: {fileID: 3342911940829711911, guid: f7632570c26a23f4d843d1e1280d2168, type: 3}
+  cost:
+  - code: gold
+    amount: 200
+  - code: wood
+    amount: 150
