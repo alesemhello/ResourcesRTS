@@ -35,7 +35,7 @@ public class Unit
         _transform.GetComponent<BoxCollider>().isTrigger = false;
         // update game resources: remove the cost of the building
         // from each game resource
-        foreach (ResourceValue resource in _data.Cost)
+        foreach (ResourceValue resource in _data.cost)
         {
             Globals.GAME_RESOURCES[resource.code].AddAmount(-resource.amount);
         }

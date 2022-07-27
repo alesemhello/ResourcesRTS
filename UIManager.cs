@@ -36,6 +36,7 @@ public class UIManager : MonoBehaviour
 
         _buildingPlacer = GetComponent<BuildingPlacer>();
         _buildingButtons = new Dictionary<string, Button>();
+        Debug.Log(Globals.BUILDING_DATA.Length);
         for (int i = 0; i < Globals.BUILDING_DATA.Length; i++)
         {
             BuildingData data = Globals.BUILDING_DATA[i];
