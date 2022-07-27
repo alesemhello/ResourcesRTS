@@ -6,9 +6,7 @@ public class BuildingPlacer : MonoBehaviour
     private Building _placedBuilding = null;
     private Ray _ray;
     private RaycastHit _raycastHit;
-    private Vector3 _lastPlacementPosition;
-    private UIManager _uiManager;
-
+    //private Vector3 _lastPlacementPosition;
 
     void Update()
     {
@@ -55,7 +53,7 @@ public class BuildingPlacer : MonoBehaviour
         // link the data into the manager
         building.Transform.GetComponent<BuildingManager>().Initialize(building);
         _placedBuilding = building;
-        _lastPlacementPosition = _raycastHit.point;
+        //_lastPlacementPosition = _raycastHit.point;
     }
 
     void _PlaceBuilding()

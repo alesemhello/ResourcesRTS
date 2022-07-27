@@ -1,12 +1,14 @@
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider))]
 public class BuildingManager : UnitManager
 {
-    private BoxCollider _collider;
-
-    private Building _building = null;
+    private Building _building;
     private int _nCollisions = 0;
+    protected override Unit Unit
+    {
+        get { return _building; }
+        set { _building = value is Building ? (Building)value : null; }
+    }
 
     public void Initialize(Building building)
     {
