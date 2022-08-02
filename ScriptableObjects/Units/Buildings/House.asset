@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5e5b654660fe34cbd95f94760b16e0, type: 3}
   m_Name: House
   m_EditorClassIdentifier: 
-  code: tower
-  description: Defence type building.
-  unitName: Tower
-  healthpoints: 500
-  prefab: {fileID: 3342911940829711911, guid: f7632570c26a23f4d843d1e1280d2168, type: 3}
+  code: house
+  description: A basic shed to rest.
+  unitName: House
+  healthpoints: 100
+  prefab: {fileID: 3342911940829711911, guid: 4e29ffb8afd601244a54e3145ac15ae0, type: 3}
   cost:
   - code: gold
-    amount: 100
+    amount: 50
   - code: wood
-    amount: 120
+    amount: 60
