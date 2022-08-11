@@ -6,7 +6,7 @@ public class UnitManager : MonoBehaviour
 {
     public GameObject selectionCircle;
     protected BoxCollider _collider;
-    protected virtual Unit Unit { get; set; }
+    public virtual Unit Unit { get; set; }
 
 
     private void OnMouseDown()
@@ -39,13 +39,20 @@ public class UnitManager : MonoBehaviour
         // basic case: using the selection box
         if (!singleClick)
         {
-            _SelectUtil();
+            /*_SelectUtil();
+            return;*/
+            if (!Globals.SELECTED_UNITS.Contains(this))
+            {
+                Debug.Log("Not Contained!");
+                _SelectUtil();
+            }
             return;
         }
 
         // single click: check for shift key
         if (!holdingShift)
         {
+            Debug.Log("holdingShift");
             List<UnitManager> selectedUnits = new List<UnitManager>(Globals.SELECTED_UNITS);
             foreach (UnitManager um in selectedUnits)
                 um.Deselect();
@@ -54,9 +61,15 @@ public class UnitManager : MonoBehaviour
         else
         {
             if (!Globals.SELECTED_UNITS.Contains(this))
+            {
+                Debug.Log("Contained!!");
                 _SelectUtil();
+            }
             else
+            {
                 Deselect();
+                Debug.Log("Deselecting");
+            }
         }
     }
 
@@ -76,6 +89,7 @@ public class UnitManager : MonoBehaviour
             h.Initialize(transform, boundingBox.height);
             h.SetPosition();
         }
+        EventManager.TriggerTypedEvent("SelectUnit", new EventManager.CustomEventData(Unit));
     }
 
     public void Deselect()
@@ -84,6 +98,7 @@ public class UnitManager : MonoBehaviour
         selectionCircle.SetActive(false);
         Destroy(_healthbar);
         _healthbar = null;
+        EventManager.TriggerTypedEvent("DeselectUnit", new EventManager.CustomEventData(Unit));
     }
 
     public void Initialize(Unit unit)

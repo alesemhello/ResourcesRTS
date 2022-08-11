@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65272adf7dc7a6946b3ae9c465e6ad29, type: 3}
+  m_Name: Soldier
+  m_EditorClassIdentifier: 
+  code: soldier
+  description: Soldier
+  unitName: A simple unit
+  healthpoints: 30
+  prefab: {fileID: 6889958883167459099, guid: 83544c1c5cb1f074da25dc079230f6a2, type: 3}
+  cost:
+  - code: gold
+    amount: 30
+  skills: []

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public static class Utils
 {
@@ -97,4 +97,18 @@ public static class Utils
         return retVal;
     }
 
+    public static int GetAlphaKeyValue(string inputString)
+    {
+        if (inputString == "0" || inputString == "à") return 0;
+        if (inputString == "1" || inputString == "&") return 1;
+        if (inputString == "2" || inputString == "é") return 2;
+        if (inputString == "3" || inputString == "\"") return 3;
+        if (inputString == "4" || inputString == "'") return 4;
+        if (inputString == "5" || inputString == "(") return 5;
+        if (inputString == "6" || inputString == "§") return 6;
+        if (inputString == "7" || inputString == "è") return 7;
+        if (inputString == "8" || inputString == "!") return 8;
+        if (inputString == "9" || inputString == "ç") return 9;
+        return -1;
+    }
 }
