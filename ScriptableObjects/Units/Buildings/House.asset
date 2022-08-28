@@ -22,3 +22,5 @@ MonoBehaviour:
     amount: 50
   - code: wood
     amount: 60
+  skills:
+  - {fileID: 11400000, guid: 92c0c8001a3e65e40a7dd679de4fbb7b, type: 2}

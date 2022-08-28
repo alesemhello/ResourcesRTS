@@ -5,8 +5,8 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    public Color invalidTextColor;
     private BuildingPlacer _buildingPlacer;
-
     public Transform buildingMenu;
     public GameObject buildingButtonPrefab;
     public Transform resourcesUIParent;
@@ -14,12 +14,8 @@ public class UIManager : MonoBehaviour
     public Transform selectedUnitsListParent;
     public GameObject selectedUnitDisplayPrefab;
     public Transform selectionGroupsParent;
-
-    public Color invalidTextColor;
-
     private Dictionary<string, TMP_Text> _resourceTexts;
     private Dictionary<string, Button> _buildingButtons;
-
     public GameObject infoPanel;
     private TMP_Text _infoPanelTitleText;
     private TMP_Text _infoPanelDescriptionText;
@@ -32,6 +28,9 @@ public class UIManager : MonoBehaviour
     private TMP_Text _selectedUnitLevelText;
     private Transform _selectedUnitResourcesProductionParent;
     private Transform _selectedUnitActionButtonsParent;
+
+    private Unit _selectedUnit;
+    public GameObject unitSkillButtonPrefab;
 
 
     private void Awake()
@@ -156,6 +155,8 @@ public class UIManager : MonoBehaviour
 
     private void _SetSelectedUnitMenu(Unit unit)
     {
+        _selectedUnit = unit;
+
         /*/ adapt content panel heights to match info to display
         int contentHeight = 60 + unit.Production.Count * 16;
         _selectedUnitContentRectTransform.sizeDelta = new Vector2(64, contentHeight);
@@ -164,21 +165,29 @@ public class UIManager : MonoBehaviour
         // update texts
         _selectedUnitTitleText.text = unit.Data.unitName;
         _selectedUnitLevelText.text = $"Level {unit.Level}";
-        // clear resource production and reinstantiate new one
-        foreach (Transform child in _selectedUnitResourcesProductionParent)
+        // clear skills and reinstantiate new ones
+        foreach (Transform child in _selectedUnitActionButtonsParent)
             Destroy(child.gameObject);
-        if (unit.Production.Count > 0)
+        if (unit.SkillManagers.Count > 0)
         {
-            GameObject g; Transform t;
-            foreach (ResourceValue resource in unit.Production)
+            GameObject g; Transform t; Button b;
+            for (int i = 0; i < unit.SkillManagers.Count; i++)
             {
                 g = GameObject.Instantiate(
-                    gameResourceCostPrefab, _selectedUnitResourcesProductionParent);
+                    unitSkillButtonPrefab, _selectedUnitActionButtonsParent);
                 t = g.transform;
-                t.Find("Text").GetComponent<Text>().text = $"+{resource.amount}";
-                t.Find("Icon").GetComponent<Image>().sprite = Resources.Load<Sprite>($"Textures/GameResources/{resource.code}");
+                b = g.GetComponent<Button>();
+                unit.SkillManagers[i].SetButton(b);
+                t.Find("Text").GetComponent<TMP_Text>().text = unit.SkillManagers[i].skill.skillName;
+                _AddUnitSkillButtonListener(b, i);
             }
         }
+    }
+
+
+    private void _AddUnitSkillButtonListener(Button b, int i)
+    {
+        b.onClick.AddListener(() => _selectedUnit.TriggerSkill(i));
     }
 
 

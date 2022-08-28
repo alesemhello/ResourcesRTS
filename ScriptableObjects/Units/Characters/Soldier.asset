@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: soldier
   description: Soldier
-  unitName: A simple unit
+  unitName: A simple unit.
   healthpoints: 30
-  prefab: {fileID: 6889958883167459099, guid: 83544c1c5cb1f074da25dc079230f6a2, type: 3}
+  prefab: {fileID: 9115447035318569530, guid: ffbd7359a65f56a47b5e3905272708bc, type: 3}
   cost:
   - code: gold
     amount: 30
