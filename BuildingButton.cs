@@ -12,7 +12,7 @@ public class BuildingButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        EventManager.TriggerTypedEvent("HoverBuildingButton", new EventManager.CustomEventData(_buildingData));
+        EventManager.TriggerEvent("HoverBuildingButton", _buildingData);
     }
 
     public void OnPointerExit(PointerEventData eventData)
